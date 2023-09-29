@@ -14,7 +14,7 @@ pipeline{
 
     stages{
          
-        stage('Git Checkout'){
+        stage('Git : Git Checkout'){
                     when { expression {  params.action == 'create' } }
             steps{
             gitCheckout(
@@ -23,7 +23,7 @@ pipeline{
             )
             }
         }
-         stage('Unit Test maven'){
+         stage('Maven : Unit Test maven'){
          
          when { expression {  params.action == 'create' } }
 
@@ -34,7 +34,7 @@ pipeline{
                }
             }
         }
-         stage('Integration Test maven'){
+         stage('Maven : Integration Test'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
@@ -43,7 +43,7 @@ pipeline{
                }
             }
         }
-         stage('Static code analysis: Sonarqube'){
+         stage('SonarQube : Static code analysis'){
           when { expression {  params.action == 'create' } }
              steps{
                 script{
@@ -53,7 +53,7 @@ pipeline{
                 }
              }
         }
-        stage('Quality Gate Status Check : Sonarqube'){
+        stage('SonarQube : Quality Gate Status Check'){
           when { expression {  params.action == 'create' } }
              steps{
                 script{
@@ -63,7 +63,7 @@ pipeline{
                 }
              }
         }
-        stage('Maven Build : maven'){
+        stage('Maven : Maven Build'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
@@ -90,7 +90,7 @@ pipeline{
                }
             }
         }
-         stage('Docker Image Scan: trivy '){
+         stage('Trivy : Docker Image Scan'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
@@ -99,7 +99,7 @@ pipeline{
                }
             }
         }
-        stage('Docker Image Push : DockerHub '){
+        stage('DockerHub : Docker Image Push'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
@@ -108,7 +108,7 @@ pipeline{
                }
             }
         }   
-        stage('Docker Image Cleanup : DockerHub '){
+        stage('DockerHub : Docker Image Cleanup'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
