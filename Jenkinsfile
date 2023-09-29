@@ -72,7 +72,7 @@ pipeline{
                }
             }
         }
-        stage('JFrog : JFrog Integrate'){
+        stage('JFrog : Push artifacts into artifactory'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
