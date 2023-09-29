@@ -76,7 +76,7 @@ pipeline{
             steps{
                rtServer (
                     id: "example-repo-local",
-                    url: "http://192.168.1.226:8082/ui/repos/tree/General/example-repo-local",
+                    url: "http://192.168.1.226:8082/artifactory/example-repo-local/",
                     credentialsId: "admin.Admin@12345"
                 )
             }
