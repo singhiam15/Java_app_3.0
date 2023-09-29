@@ -73,12 +73,12 @@ pipeline{
             }
         }
         stage('JFrog : Push artifacts into artifactory'){
-         when { expression {  params.action == 'create' } }
             steps{
-               script{
-                   
-                   curl -X PUT -u admin:Admin@12345 -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://192.168.1.226:8081/artifactory/example-repo-local/
-               }
+               rtServer (
+                    id: "kaloula-artifactory",
+                    url: "https://kaloula.jfrog.io/artifactory",
+                    credentialsId: "admin.jfrog"
+                )
             }
         }
         stage('Docker Image Build'){
