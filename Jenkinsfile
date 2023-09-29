@@ -72,7 +72,7 @@ pipeline{
                }
             }
         }
-        stage('JFrog : JFrog'){
+        stage('JFrog : JFrog Integrate'){
          when { expression {  params.action == 'create' } }
             steps{
                script{
