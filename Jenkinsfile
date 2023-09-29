@@ -75,9 +75,9 @@ pipeline{
         stage('JFrog : Push artifacts into artifactory'){
             steps{
                rtServer (
-                    id: "kaloula-artifactory",
-                    url: "https://kaloula.jfrog.io/artifactory",
-                    credentialsId: "admin.jfrog"
+                    id: "example-repo-local",
+                    url: "http://192.168.1.226:8082/ui/repos/tree/General/example-repo-local",
+                    credentialsId: "admin.Admin@12345"
                 )
             }
         }
