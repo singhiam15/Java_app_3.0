@@ -77,7 +77,7 @@ pipeline{
             steps{
                script{
                    
-                   mvnBuild()
+                   curl -X PUT -u admin:Admin@12345 -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://192.168.1.226:8081/artifactory/example-repo-local/
                }
             }
         }
